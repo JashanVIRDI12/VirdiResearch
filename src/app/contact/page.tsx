@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Mail, MapPin, Clock, User, Send, MessageSquare } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -26,26 +27,26 @@ export default function Contact() {
   const contactInfo = [
     {
       title: 'Email',
-      value: 'info@virdiresearch.com',
-      icon: '📧',
+      value: 'jashan@virdiresearch.com',
+      icon: Mail,
       color: 'blue'
     },
     {
-      title: 'Phone',
-      value: '+1 (555) 123-4567',
-      icon: '📞',
+      title: 'Location',
+      value: 'India\n(Remote Operations)',
+      icon: MapPin,
       color: 'green'
     },
     {
-      title: 'Address',
-      value: '123 Research Ave, Suite 100\nNew York, NY 10001',
-      icon: '📍',
+      title: 'Response Time',
+      value: 'Within 24 hours\nIST Business Hours',
+      icon: Clock,
       color: 'purple'
     },
     {
-      title: 'Business Hours',
-      value: 'Mon - Fri: 9:00 AM - 6:00 PM EST',
-      icon: '🕒',
+      title: 'Consultation',
+      value: 'Research & Investment\nAdvisory Services',
+      icon: User,
       color: 'orange'
     }
   ];
@@ -81,11 +82,18 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
-            Contact Us
+          <motion.div
+            className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center"
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <MessageSquare size={32} className="text-white" />
+          </motion.div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+            Get In Touch
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to unlock insights for your business? Get in touch with our research experts today.
+            Ready to elevate your investment strategy? Connect with Jashan Singh Virdi for professional research and advisory services.
           </p>
         </motion.div>
 
@@ -97,7 +105,10 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="glass p-8 rounded-2xl"
           >
-            <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
+            <div className="flex items-center gap-3 mb-6">
+              <Send size={24} className="text-blue-400" />
+              <h2 className="text-2xl font-bold text-white">Send a Message</h2>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -180,7 +191,7 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full glass glass-hover py-4 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30"
+                className="w-full glass glass-hover py-4 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center gap-2"
                 whileHover={{
                   scale: 1.02,
                   y: -2,
@@ -191,6 +202,7 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
+                <Send size={18} />
                 Send Message
               </motion.button>
             </form>
@@ -204,38 +216,57 @@ export default function Contact() {
             className="space-y-8"
           >
             <div className="glass p-8 rounded-2xl">
-              <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+              <div className="flex items-center gap-3 mb-6">
+                <User size={24} className="text-purple-400" />
+                <h2 className="text-2xl font-bold text-white">Contact Information</h2>
+              </div>
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 className="space-y-6"
               >
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.title}
-                    variants={itemVariants}
-                    className="flex items-start space-x-4 p-3 glass-hover rounded-xl group"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.span
-                      className="text-2xl"
-                      whileHover={{ scale: 1.2, rotate: 10 }}
-                      transition={{ duration: 0.3 }}
+                {contactInfo.map((info) => {
+                  const IconComponent = info.icon;
+                  return (
+                    <motion.div
+                      key={info.title}
+                      variants={itemVariants}
+                      className="flex items-start space-x-4 p-3 glass-hover rounded-xl group"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      {info.icon}
-                    </motion.span>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">
-                        {info.title}
-                      </h3>
-                      <p className="text-gray-400 whitespace-pre-line group-hover:text-gray-300 transition-colors duration-300">
-                        {info.value}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      <motion.div
+                        className={`p-2 rounded-xl ${
+                          info.color === 'blue' ? 'bg-blue-500/20' :
+                          info.color === 'green' ? 'bg-green-500/20' :
+                          info.color === 'purple' ? 'bg-purple-500/20' :
+                          'bg-orange-500/20'
+                        }`}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <IconComponent 
+                          size={20} 
+                          className={`${
+                            info.color === 'blue' ? 'text-blue-400' :
+                            info.color === 'green' ? 'text-green-400' :
+                            info.color === 'purple' ? 'text-purple-400' :
+                            'text-orange-400'
+                          }`}
+                        />
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">
+                          {info.title}
+                        </h3>
+                        <p className="text-gray-400 whitespace-pre-line group-hover:text-gray-300 transition-colors duration-300">
+                          {info.value}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </div>
 
@@ -247,12 +278,13 @@ export default function Contact() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10" />
               <div className="relative">
-                <h3 className="text-xl font-bold text-white mb-4">Ready to Start Your Research Project?</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Ready for Professional Investment Advisory?</h3>
                 <p className="text-gray-300 mb-6">
-                  Our team of experts is ready to help you uncover the insights you need to drive your business forward.
+                  Get NISM-certified research analysis and investment advisory services tailored to your portfolio needs. 
+                  Leveraging 2+ years of equity trading experience and automated data insights.
                 </p>
                 <motion.button
-                  className="glass glass-hover px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-white/10 to-blue-500/20 border border-white/20"
+                  className="glass glass-hover px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-white/10 to-blue-500/20 border border-white/20 flex items-center gap-2"
                   whileHover={{
                     scale: 1.05,
                     y: -2,
@@ -260,7 +292,8 @@ export default function Contact() {
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Schedule a Consultation
+                  <User size={18} />
+                  Schedule Consultation
                 </motion.button>
               </div>
             </motion.div>

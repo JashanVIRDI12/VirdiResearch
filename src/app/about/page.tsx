@@ -1,52 +1,56 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Award, TrendingUp, BookOpen, MapPin, User } from 'lucide-react';
 
 export default function About() {
-  const team = [
+  const credentials = [
     {
-      name: 'Dr. Sarah Virdi',
-      role: 'Chief Research Officer',
-      description: 'Leading market research expert with 15+ years of experience',
-      initials: 'SV'
+      title: 'NISM Certified Research Analyst',
+      description: 'Certified by National Institute of Securities Markets',
+      icon: Award,
+      color: 'blue'
     },
     {
-      name: 'Michael Chen',
-      role: 'Data Analytics Director', 
-      description: 'Specialist in quantitative analysis and predictive modeling',
-      initials: 'MC'
+      title: 'Investment Advisor',
+      description: 'Licensed investment advisory services',
+      icon: TrendingUp,
+      color: 'green'
     },
     {
-      name: 'Emily Rodriguez',
-      role: 'Market Intelligence Lead',
-      description: 'Expert in consumer behavior and market trend analysis',
-      initials: 'ER'
+      title: 'CS Honours Student',
+      description: 'Pursuing Computer Science with focus on automation',
+      icon: BookOpen,
+      color: 'purple'
     }
   ];
 
-  const values = [
+  const experience = [
     {
-      title: 'Innovation',
-      description: 'Pioneering new methodologies in research and analysis',
-      icon: '🚀'
+      title: 'Equity Trading',
+      duration: '2+ Years',
+      description: 'Active equity trader with proven track record',
+      icon: TrendingUp
     },
     {
-      title: 'Accuracy',
-      description: 'Delivering precise, data-driven insights you can trust',
-      icon: '🎯'
+      title: 'Data Automation',
+      duration: 'Ongoing',
+      description: 'Automating research processes and data analysis',
+      icon: BookOpen
     },
     {
-      title: 'Impact',
-      description: 'Creating research that drives meaningful business decisions',
-      icon: '💎'
+      title: 'Remote Operations',
+      duration: 'Current',
+      description: 'Running Virdi Research independently from India',
+      icon: MapPin
     }
   ];
 
   const stats = [
-    { number: '500+', label: 'Research Projects' },
-    { number: '150+', label: 'Global Clients' },
-    { number: '25+', label: 'Industry Sectors' },
-    { number: '9', label: 'Years of Excellence' }
+    { number: '2+', label: 'Years Trading' },
+    { number: 'NISM', label: 'Certified' },
+    { number: 'CS', label: 'Honours' },
+    { number: 'India', label: 'Based' }
   ];
 
   const containerVariants = {
@@ -80,12 +84,19 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <motion.div
+            className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-8 flex items-center justify-center"
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <User size={48} className="text-white" />
+          </motion.div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
-            About Virdi Research
+            Jashan Singh Virdi
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Founded in 2015, Virdi Research has been at the forefront of market intelligence and strategic consulting, 
-            helping organizations make informed decisions through comprehensive research and analysis.
+            NISM Certified Research Analyst & Investment Advisor. Equity trader with 2+ years of experience, 
+            pursuing CS Honours and automating research processes. Running Virdi Research remotely from India.
           </p>
         </motion.div>
 
@@ -98,15 +109,15 @@ export default function About() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />
           <div className="relative">
-            <h2 className="text-3xl font-bold text-white mb-4 text-center">Our Mission</h2>
+            <h2 className="text-3xl font-bold text-white mb-4 text-center">Mission</h2>
             <p className="text-lg text-gray-300 text-center max-w-4xl mx-auto">
-              To empower businesses and organizations with actionable insights through rigorous research, 
-              innovative methodologies, and deep market understanding that drives sustainable growth and competitive advantage.
+              To provide institutional-grade equity research and market intelligence through data-driven analysis, 
+              leveraging technology and automation to deliver precise investment insights for modern investors.
             </p>
           </div>
         </motion.div>
 
-        {/* Values */}
+        {/* Credentials */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -117,39 +128,53 @@ export default function About() {
             variants={itemVariants}
             className="text-3xl font-bold text-white mb-8 text-center"
           >
-            Our Values
+            Credentials & Expertise
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                variants={itemVariants}
-                className="glass glass-hover p-6 rounded-2xl text-center group"
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <motion.div 
-                  className="text-4xl mb-4"
-                  whileHover={{ scale: 1.2, rotate: 10 }}
-                  transition={{ duration: 0.3 }}
+            {credentials.map((credential) => {
+              const IconComponent = credential.icon;
+              return (
+                <motion.div
+                  key={credential.title}
+                  variants={itemVariants}
+                  className="glass glass-hover p-6 rounded-2xl text-center group"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
                 >
-                  {value.icon}
+                  <motion.div 
+                    className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
+                      credential.color === 'blue' ? 'bg-blue-500/20' :
+                      credential.color === 'green' ? 'bg-green-500/20' :
+                      'bg-purple-500/20'
+                    }`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <IconComponent 
+                      size={32} 
+                      className={`${
+                        credential.color === 'blue' ? 'text-blue-400' :
+                        credential.color === 'green' ? 'text-green-400' :
+                        'text-purple-400'
+                      }`}
+                    />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
+                    {credential.title}
+                  </h3>
+                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                    {credential.description}
+                  </p>
                 </motion.div>
-                <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
-                  {value.title}
-                </h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 
-        {/* Team */}
+        {/* Experience */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -160,38 +185,39 @@ export default function About() {
             variants={itemVariants}
             className="text-3xl font-bold text-white mb-8 text-center"
           >
-            Leadership Team
+            Experience & Focus
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                variants={itemVariants}
-                className="glass glass-hover p-6 rounded-2xl text-center group"
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <motion.div 
-                  className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
+            {experience.map((exp) => {
+              const IconComponent = exp.icon;
+              return (
+                <motion.div
+                  key={exp.title}
+                  variants={itemVariants}
+                  className="glass glass-hover p-6 rounded-2xl text-center group"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
                 >
-                  <span className="text-white text-2xl font-bold">
-                    {member.initials}
-                  </span>
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <IconComponent size={28} className="text-white" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+                    {exp.title}
+                  </h3>
+                  <p className="text-emerald-400 font-medium mb-3">{exp.duration}</p>
+                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
+                    {exp.description}
+                  </p>
                 </motion.div>
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                  {member.name}
-                </h3>
-                <p className="text-purple-400 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                  {member.description}
-                </p>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 
