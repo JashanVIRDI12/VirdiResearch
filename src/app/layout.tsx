@@ -12,7 +12,7 @@ const openSans = Open_Sans({
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${poppins.variable} antialiased`}
       >
         <Navigation />
-        <main className="pt-16">{children}</main>
+        <main className="pt-16 min-h-screen">{children}</main>
       </body>
     </html>
   );

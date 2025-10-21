@@ -79,17 +79,17 @@ export default function Research() {
     <div className="min-h-screen bg-black relative">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-black to-black" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white/60 via-white to-white/60 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-white/60 via-white to-white/60 bg-clip-text text-transparent">
             Research Reports
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             Access our 2025 institutional-grade research reports and market analysis
           </p>
         </motion.div>
@@ -99,17 +99,17 @@ export default function Research() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <h2 className="text-2xl font-bold text-white mb-8">2025 Research Reports</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 px-4">2025 Research Reports</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {reports.map((report, index) => {
               const IconComponent = report.icon;
               return (
                 <motion.div
                   key={report.title}
                   variants={itemVariants}
-                  className="group relative p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl cursor-pointer overflow-hidden"
+                  className="group relative p-4 sm:p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl cursor-pointer overflow-hidden"
                   whileHover={{ 
                     scale: 1.02, 
                     y: -4,
@@ -128,16 +128,16 @@ export default function Research() {
                   />
                   
                   <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`p-3 rounded-xl ${
+                    <div className="flex items-start justify-between mb-3 sm:mb-4">
+                      <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl ${
                         report.color === 'blue' ? 'bg-blue-500/20' :
                         report.color === 'yellow' ? 'bg-yellow-500/20' :
                         report.color === 'green' ? 'bg-green-500/20' :
                         'bg-purple-500/20'
                       }`}>
                         <IconComponent 
-                          size={24} 
-                          className={`${
+                          size={20} 
+                          className={`sm:w-6 sm:h-6 ${
                             report.color === 'blue' ? 'text-blue-400' :
                             report.color === 'yellow' ? 'text-yellow-400' :
                             report.color === 'green' ? 'text-green-400' :
@@ -146,7 +146,7 @@ export default function Research() {
                         />
                       </div>
                       <div className="flex items-center space-x-2">
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                           report.color === 'blue' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
                           report.color === 'yellow' ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30' :
                           report.color === 'green' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
@@ -157,24 +157,25 @@ export default function Research() {
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors duration-300">
                       {report.title}
                     </h3>
                     
-                    <p className="text-gray-400 mb-4 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">
                       {report.description}
                     </p>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">{report.date}</span>
+                      <span className="text-xs sm:text-sm text-gray-500">{report.date}</span>
                       <motion.button
                         onClick={() => handleDownload(report.filename, report.title)}
-                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 rounded-lg text-white font-medium hover:bg-white/20 transition-colors duration-200"
+                        className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-1 sm:py-2 bg-white/10 rounded-lg text-white font-medium hover:bg-white/20 transition-colors duration-200 text-sm"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Download size={16} />
-                        <span>Download</span>
+                        <Download size={14} className="sm:w-4 sm:h-4" />
+                        <span className="hidden sm:inline">Download</span>
+                        <span className="sm:hidden">Get</span>
                       </motion.button>
                     </div>
                   </div>
@@ -191,19 +192,19 @@ export default function Research() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center"
+          className="text-center px-4"
         >
-          <div className="p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl max-w-2xl mx-auto">
-            <FileText size={48} className="text-blue-400 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="p-6 sm:p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl max-w-2xl mx-auto">
+            <FileText size={36} className="sm:w-12 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4" />
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
               Need Custom Research?
             </h3>
-            <p className="text-gray-400 mb-6">
+            <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
               Get tailored research reports and analysis for your specific investment needs.
             </p>
             <motion.button
               onClick={() => window.location.href = '/contact'}
-              className="px-8 py-3 bg-blue-500/20 border border-blue-500/30 rounded-xl text-blue-300 font-medium hover:bg-blue-500/30 transition-colors duration-200"
+              className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl text-blue-300 font-medium hover:bg-blue-500/30 transition-colors duration-200 text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

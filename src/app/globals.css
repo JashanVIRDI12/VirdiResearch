@@ -8,9 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-open-sans);
-  --font-mono: var(--font-poppins);
-  --font-heading: var(--font-poppins);
+  --font-sans: var(--font-open-sans), system-ui, sans-serif;
+  --font-mono: var(--font-poppins), system-ui, sans-serif;
 }
 
 body {

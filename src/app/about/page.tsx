@@ -77,24 +77,24 @@ export default function About() {
     <div className="min-h-screen bg-black relative">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-black to-blue-900/10" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.div
-            className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-8 flex items-center justify-center"
+            className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-6 sm:mb-8 flex items-center justify-center"
             whileHover={{ scale: 1.05, rotate: 5 }}
             transition={{ duration: 0.3 }}
           >
-            <User size={48} className="text-white" />
+            <User size={32} className="sm:w-12 sm:h-12 text-white" />
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
             Jashan Singh Virdi
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             NISM Certified Research Analyst & Investment Advisor. Equity trader with 2+ years of experience, 
             pursuing CS Honours and automating research processes. Running Virdi Research remotely from India.
           </p>
@@ -105,12 +105,12 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass p-8 rounded-2xl mb-16 relative overflow-hidden"
+          className="glass p-6 sm:p-8 rounded-xl sm:rounded-2xl mb-12 sm:mb-16 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />
           <div className="relative">
-            <h2 className="text-3xl font-bold text-white mb-4 text-center">Mission</h2>
-            <p className="text-lg text-gray-300 text-center max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 text-center">Mission</h2>
+            <p className="text-base sm:text-lg text-gray-300 text-center max-w-4xl mx-auto">
               To provide institutional-grade equity research and market intelligence through data-driven analysis, 
               leveraging technology and automation to deliver precise investment insights for modern investors.
             </p>
@@ -122,22 +122,22 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl font-bold text-white mb-8 text-center"
+            className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center"
           >
             Credentials & Expertise
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {credentials.map((credential) => {
               const IconComponent = credential.icon;
               return (
                 <motion.div
                   key={credential.title}
                   variants={itemVariants}
-                  className="glass glass-hover p-6 rounded-2xl text-center group"
+                  className="glass glass-hover p-4 sm:p-6 rounded-xl sm:rounded-2xl text-center group"
                   whileHover={{ 
                     scale: 1.05, 
                     y: -5,
@@ -145,7 +145,7 @@ export default function About() {
                   }}
                 >
                   <motion.div 
-                    className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
+                    className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center ${
                       credential.color === 'blue' ? 'bg-blue-500/20' :
                       credential.color === 'green' ? 'bg-green-500/20' :
                       'bg-purple-500/20'
@@ -154,18 +154,18 @@ export default function About() {
                     transition={{ duration: 0.3 }}
                   >
                     <IconComponent 
-                      size={32} 
-                      className={`${
+                      size={24} 
+                      className={`sm:w-8 sm:h-8 ${
                         credential.color === 'blue' ? 'text-blue-400' :
                         credential.color === 'green' ? 'text-green-400' :
                         'text-purple-400'
                       }`}
                     />
                   </motion.div>
-                  <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 group-hover:text-blue-300 transition-colors duration-300">
                     {credential.title}
                   </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-sm sm:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                     {credential.description}
                   </p>
                 </motion.div>
@@ -179,22 +179,22 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl font-bold text-white mb-8 text-center"
+            className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center"
           >
             Experience & Focus
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {experience.map((exp) => {
               const IconComponent = exp.icon;
               return (
                 <motion.div
                   key={exp.title}
                   variants={itemVariants}
-                  className="glass glass-hover p-6 rounded-2xl text-center group"
+                  className="glass glass-hover p-4 sm:p-6 rounded-xl sm:rounded-2xl text-center group"
                   whileHover={{ 
                     scale: 1.02, 
                     y: -5,
@@ -202,17 +202,17 @@ export default function About() {
                   }}
                 >
                   <motion.div 
-                    className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center"
+                    className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <IconComponent size={28} className="text-white" />
+                    <IconComponent size={20} className="sm:w-7 sm:h-7 text-white" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
                     {exp.title}
                   </h3>
-                  <p className="text-emerald-400 font-medium mb-3">{exp.duration}</p>
-                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-emerald-400 font-medium mb-2 sm:mb-3 text-sm sm:text-base">{exp.duration}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm group-hover:text-gray-300 transition-colors duration-300">
                     {exp.description}
                   </p>
                 </motion.div>
@@ -226,10 +226,10 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="glass p-8 rounded-2xl relative overflow-hidden"
+          className="glass p-6 sm:p-8 rounded-xl sm:rounded-2xl relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-black/50" />
-          <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+          <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -239,13 +239,13 @@ export default function About() {
                 className="group"
               >
                 <motion.h3 
-                  className="text-3xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors duration-300"
+                  className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-white group-hover:text-blue-300 transition-colors duration-300"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 >
                   {stat.number}
                 </motion.h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-sm sm:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   {stat.label}
                 </p>
               </motion.div>
